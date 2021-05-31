@@ -366,7 +366,7 @@ Guitar.create([{brand: "Gibson",
             ])               
 
   10.times do
-    Customer.create(name: Faker::Name.name, email: Faker::Internet.email, order_history: Faker::Alphanumeric.alpha(number: 10))
+    Customer.create(name: Faker::Name.name, email: Faker::Internet.email, order_history: [])
   end
 
   5.times do
