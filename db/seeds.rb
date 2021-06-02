@@ -56,7 +56,7 @@ Guitar.create([
     material: "Alder", 
     color: "White", 
     left_handed: false, 
-    image: "https://media.sweetwater.com/api/i/f-webp__q-82__ha-bfe8d898bba4baf0__hmac-42c812ee8bff63047fa525915f939cd5abd509af/images/closeup/750-StratPMPWT_front.jpg.auto.webp",
+    image: "https://media.sweetwater.com/api/i/f-webp__q-85__ha-083bbf50138ec35d__hmac-e1d42085e844e60ea82e147a99d3d34bc00d904e/store/enhanced/items/StratPMPWT/3bc3a1-StratPMPWT_front.jpg.auto.webp",
     model: "Stratocaster",
   },      
   {

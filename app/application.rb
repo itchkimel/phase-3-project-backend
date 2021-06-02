@@ -21,12 +21,12 @@ class Application
 
   private
   
-  def send_guitars
+  def send_customers
     customer_inst_arr = Customer.all
     return [200, { "Content-Type" => "application/json" }, [ customer_inst_arr.to_json ]]
   end
 
-  def send_customers
+  def send_guitars
     guitar_inst_arr = Guitar.all
     return [200, { "Content-Type" => "application/json" }, [ guitar_inst_arr.to_json ]]
   end
