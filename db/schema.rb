@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_31_160301) do
+ActiveRecord::Schema.define(version: 2021_06_02_190411) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "guitar_id"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2021_05_31_160301) do
   create_table "customers", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "order_history"
   end
 
   create_table "guitars", force: :cascade do |t|
@@ -31,6 +30,11 @@ ActiveRecord::Schema.define(version: 2021_05_31_160301) do
     t.boolean "left_handed"
     t.string "image"
     t.string "model"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "guitar_id"
+    t.integer "customer_id"
   end
 
 end

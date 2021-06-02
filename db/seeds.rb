@@ -369,12 +369,12 @@ Guitar.create([
 puts "Created Guitars! 🎸🎸🎸"  
 
 10.times do
-  Customer.create(name: Faker::Name.name, email: Faker::Internet.email, order_history: [])
+  Customer.create(name: Faker::Name.name, email: Faker::Internet.email)
 end
 puts "Created Customers! 🧍🧍"
 
 5.times do
-  Cart.create(guitar_id: Guitar.ids.sample, customer_id: Customer.ids.sample)
+  Order.create(guitar_id: Guitar.ids.sample, customer_id: Customer.ids.sample)
 end  
 
 puts "Created Carts! 🛒 🛒"
