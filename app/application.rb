@@ -25,17 +25,15 @@ class Application
 
     elsif req.path.match("/order") && req.post?
       order_hash = JSON.parse(req.body.read)
-        # Customer.exists?(:name => order_hash[1])
       name = order_hash.pop()
       customer_inst = Customer.all.find_by(name: name)
-
-      # binding.pry
 
       order_hash.each do |guitar| 
         Order.create(guitar_id: guitar["id"], customer_id: customer_inst.id)
       end
+      
       return [201, { 'Content-Type' => 'application/json' }, [ { :message => "null" }.to_json ] ]
-      # binding.pry
+    
     else
       send_not_found
     end
