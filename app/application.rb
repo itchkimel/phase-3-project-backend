@@ -22,9 +22,12 @@ class Application
         if Customer.exists?(:name => name)
           customer_inst = Customer.find_by(name: name)
           
-          customer_inst.to_json(:include => :orders)
+          cust_assc = customer_inst.to_json(:include => { :orders => {
+            :include => :guitar }
+          }
+          )
 
-          binding.pry
+          # binding.pry
 
           return [200, { "Content-Type" => "application/json" }, [ cust_assc ]]
           
