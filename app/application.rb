@@ -2,43 +2,47 @@ class Application
   def call(env)
     req = Rack::Request.new(env)
 
-    if req.path.match(/hello/) && req.get? #regex
-      send_hello
-
-    elsif req.path.match("/guitars") && req.get?# regex as a string
+    if req.path.match("/guitars") && req.get?# regex as a string
       # get guitars from DB
       #serve to client as json 
       send_guitars
-
-    # elsif req.path.match("/customer")
-    #   send_customer
-
-    # elsif req.path.match("/order") 
-    #   send_order
 
     elsif req.path.match("/customer") && req.get?
       name = req.path.split("/").last.gsub!('%20', ' ')
 
         if Customer.exists?(:name => name)
           customer_inst = Customer.find_by(name: name)
-          
           cust_assc = customer_inst.to_json(:include => { :orders => {
             :include => :guitar }
-          }
-          )
-
-          # binding.pry
+          })
 
           return [200, { "Content-Type" => "application/json" }, [ cust_assc ]]
           
         else
+
           return [200, { "Content-Type" => "application/json" }, [ { :message => "null" }.to_json ]]
         end
-    
+
+    elsif req.path.match("/order") && req.post?
+      order_hash = JSON.parse(req.body.read)
+        # Customer.exists?(:name => order_hash[1])
+      name = order_hash.pop()
+      customer_inst = Customer.all.find_by(name: name)
+
+      # binding.pry
+
+      order_hash.each do |guitar| 
+        Order.create(guitar_id: guitar["id"], customer_id: customer_inst.id)
+      end
+      return [201, { 'Content-Type' => 'application/json' }, [ { :message => "null" }.to_json ] ]
+      # binding.pry
     else
       send_not_found
     end
   end
+
+
+
 
   private
 
