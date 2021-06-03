@@ -1,7 +1,10 @@
 puts "Deleting seeds! 🗑"
-Cart.destroy_all
+Order.destroy_all
+Order.reset_pk_sequence
 Guitar.destroy_all
+Guitar.reset_pk_sequence
 Customer.destroy_all
+Customer.reset_pk_sequence
 
 puts "Creating seeds! 🌸"
 Guitar.create([

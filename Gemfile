@@ -11,3 +11,4 @@ gem "activerecord"
 gem "sinatra-activerecord"
 gem "sqlite3"
 gem 'faker'
+gem 'activerecord-reset-pk-sequence'
