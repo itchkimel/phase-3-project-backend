@@ -313,7 +313,7 @@ puts "Created Guitars! 🎸🎸🎸"
 end
 puts "Created Customers! 🧍🧍"
 
-5.times do
+20.times do
   Order.create(guitar_id: Guitar.ids.sample, customer_id: Customer.ids.sample)
 end  
 
