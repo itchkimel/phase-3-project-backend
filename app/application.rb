@@ -26,10 +26,7 @@ class Application
     elsif req.path.match("/customer") && req.post?
         customer_hash = JSON.parse(req.body.read)
         Customer.create(name: customer_hash["fullName"], email: customer_hash["email"])
-        # binding.pry
-        # customer_hash["fullName"]
-        # customer_hash["email"]
-        
+
         return [201, { 'Content-Type' => 'application/json' }, [ { :message => "null" }.to_json ] ]
 
     elsif req.path.match("/order") && req.post?
